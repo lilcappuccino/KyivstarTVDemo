@@ -8,6 +8,13 @@
 import Foundation
 
 // MARK: - AssetDetailsAPI
+
+///
+/// Optional:
+/// If we want only decoding of the JSON data, then we have to conform to the Decodable protocol only.
+/// The Codable protocol will be required if we need to support decoding and encoding both.
+///
+
 public struct AssetDetailsAPI: Codable {
     public let id, name: String
     public let image: String
