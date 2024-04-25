@@ -17,6 +17,12 @@ enum Home {
         case liveChannel
         case epg
         
+        ///
+        /// Optional:
+        /// We receive titles from backend.
+        /// There was not any requirements to create hardcoded namings.
+        /// 
+        
         var title: String {
             switch self {
             case .category:

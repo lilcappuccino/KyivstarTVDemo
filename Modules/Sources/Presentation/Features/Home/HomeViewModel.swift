@@ -10,6 +10,14 @@ import Domain
 import Core
 import Combine
 
+///
+/// Optional:
+/// Lack of documentation here.
+/// I need some time to understand why we need this `typealias` here
+/// Also, `import Domain` -> This is a compiled package.
+/// It would be great to have a bit of documentation, how everything is working here to make reviewing a bit easier.
+///
+
 typealias Category = Domain.Category
 
 final class HomeViewModel: ViewModel {
@@ -44,6 +52,14 @@ final class HomeViewModel: ViewModel {
         
         categories = categoriesResponse
         promotions = promotionsResponse
+        
+        ///
+        /// Required:
+        /// Not all requirements are met.
+        /// You filter all groups and show only one for one type via key in sectionCanBeDeletedDict
+        /// But there was no requirements to do so.
+        /// You need to display all content groups, so better strategy was to use id for key, not type
+        ///
         
         contentGroupsResponse.forEach { group in
             switch group.type {
