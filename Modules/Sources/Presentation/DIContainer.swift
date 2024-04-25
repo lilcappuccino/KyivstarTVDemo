@@ -71,6 +71,7 @@ final class DIContainerImpl: DIContainer {
 /// + Structure of code
 /// + Accuracy in strategy selections
 /// + No memory leaks and UI lags
+/// + Retry network 
 ///
 /// - Some missunderstanding with modern concurency
 /// - Lack of documentation in some cases
