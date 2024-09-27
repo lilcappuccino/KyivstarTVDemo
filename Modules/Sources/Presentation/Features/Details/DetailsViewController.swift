@@ -54,9 +54,21 @@ final class DetailsViewController: UIViewController {
             hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    deinit {
+        /// Just regular check for leaks
+        print("DetailsViewController deinited")
+        /// Leak check: Passed, no leaks.
+    }
 }
 
 extension DetailsViewController: UIGestureRecognizerDelegate {
+    
+    ///
+    /// Required:
+    /// You created a `interactivePopGestureRecognizer` but forgot to add a back button
+    ///
+    
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         // Check if the current view controller is the root of the navigation stack
         if navigationController?.viewControllers.count ?? 0 > 1 {

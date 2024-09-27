@@ -11,7 +11,9 @@ import OSLog
 public typealias AppLogger = Logger
 
 extension Logger {
-
+    ///
+    /// Nice thing to have logger
+    
     // MARK: - LogCategory
     enum LogCategory: String {
         case networkService

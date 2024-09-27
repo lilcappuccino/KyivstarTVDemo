@@ -74,6 +74,11 @@ final class HomeViewController: UIViewController, Viewable {
         collectionView.backgroundColor = .clear
         Task(priority: .high) {
             do {
+                ///
+                /// Required:
+                /// There was a requirement to show user any loaded information.
+                /// Here we see that if any of request fails -> all previously loaded info will be lost in catch case.
+                ///
                 try await viewModel.fetchData()
             } catch let error {
                 viewModel.logger.error("\(error.localizedDescription)")
@@ -112,6 +117,7 @@ final class HomeViewController: UIViewController, Viewable {
         let layout = UICollectionViewCompositionalLayout { [unowned self] sectionIndex, layoutEnvironment -> NSCollectionLayoutSection? in
             
             let section = dataSource.snapshot().sectionIdentifiers[sectionIndex]
+            // Naming confuse
             return self.lauotySectionFactory.build(for: section)
         }
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)

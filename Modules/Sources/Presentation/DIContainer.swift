@@ -62,3 +62,26 @@ final class DIContainerImpl: DIContainer {
         logger.info("DIContainer deallocated")
     }
 }
+
+
+///
+/// Overal:
+/// + Approach with packages
+/// + MVVM+C knowledge
+/// + Structure of code
+/// + Accuracy in strategy selections
+/// + No memory leaks and UI lags
+/// + Retry network 
+///
+/// - Some missunderstanding with modern concurency
+/// - Lack of documentation in some cases
+/// - Not all requirements are met (slight inattention)
+/// -- No back button in asset page
+/// -- Not all content groups are displayed
+/// -- If one request fails all other data will not be displayed or loaded
+/// - Minor issues (described in comments)
+///
+/// I would recomend our HR team to proceed with you to the next stage - `tech interview`.
+/// Please, contact `Yulia` directly in the comfort way to assign time for the next stage.
+/// Thanks for your time.
+///

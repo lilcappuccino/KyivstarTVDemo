@@ -28,6 +28,7 @@ public struct ContentGroups {
 }
 
 extension ContentGroupsAPI {
+    // Function name confuse
     func mapToDoamin() -> ContentGroups {
         let typeDomain = type.map { ContentType(rawValue: $0) ?? .unknown }
         return ContentGroups(id: id,

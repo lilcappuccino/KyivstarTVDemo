@@ -26,6 +26,38 @@ public final class NetworkServiceImpl: NetworkService {
     }
     
     // MARK: - Public methods
+    
+    /**
+     Optional:
+        Service is quite good and usable, but not flexible and difficult to scale.
+        Not a best practise of using throw here.
+        When we want to cast throwed Error to our specific error - code becomes a boiler plate.
+    
+        do {
+            try request.fetch(...params)
+        } catch SomeError.ValidationError.contentGroupIsEmpty {
+
+        } catch SomeError.ValidationError.promoAreaEmpty(let promoLength) where promoLength == 1 {
+
+        } catch is SomeError.ValidationError {
+            // All `SomeError.ValidationError` types except for the earlier catch `contentGroupIsEmpty` and `promoAreaEmpty` error.
+            // switch case comes in
+        } catch {
+            // All other errors, alamofire/URLSession and iOS networking
+        }
+    */
+    
+    /**
+     In swift 6 we will have great possibility, check it out → https://github.com/apple/swift-evolution/blob/main/proposals/0413-typed-throws.md
+     And, what about if server will return us status - 200 OK and this:
+    
+         {
+             "error": "No promotions for this user",
+             "code": 3745,
+             "rayId": "some_hash_here"
+         }
+     */
+    
     public func load<T: Decodable>(_ request: RequestWithResponse<T>) async throws -> T {
         let urlRequest = try await generateURLRequest(from: request)
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -83,6 +115,8 @@ public final class NetworkServiceImpl: NetworkService {
     private func addHeader(for request: URLRequest) async -> URLRequest {
         var request = request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Why await here?  
         let barier = await authentication.barier
         request.addValue( "Bearer \(barier)", forHTTPHeaderField: "Authorization")
         return request

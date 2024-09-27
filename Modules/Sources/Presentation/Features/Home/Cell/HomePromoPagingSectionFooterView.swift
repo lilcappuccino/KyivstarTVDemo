@@ -10,6 +10,11 @@ import UIKit
 import Combine
 
 // To resolve this issue I've used an aritcle: https://nemecek.be/blog/141/how-to-show-page-indicator-with-compositional-layout#preparing-paging-control
+
+/// 
+/// We also used simillar workaround
+///
+
 final class HomePromoPagingSectionFooterView: UICollectionReusableView {
     
     // MARK: - Properties
